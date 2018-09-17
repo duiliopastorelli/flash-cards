@@ -1,2 +1,2 @@
-# flash-cards
+# Flash-cards
 Flash cards React project
