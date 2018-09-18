@@ -14,11 +14,21 @@ class App extends Component {
     nickName: ''
   };
 
+  componentDidMount() {
+    this.cookieExists('userToken');
+    console.log('foo');
+  }
+
   //Check if a specific cookie exists already
   cookieExists = (cookieName) => {
-    if (document.cookie.split(';').filter(function (item) {
+    const cookieInArray = document.cookie.split(';');
+    const cookieFiltered = cookieInArray.filter(function (item) {
       return item.indexOf(`${cookieName}=`) >= 0
-    }).length) {
+    });
+
+    if (cookieFiltered.length) {
+      const cookieValue = cookieFiltered[0].split('=')[1];
+      this.setState({nickName: cookieValue});
       return true;
     }
   };
@@ -45,7 +55,13 @@ class App extends Component {
         <Route exact path="/" render={() => {
           //Check if the userToken is set and displays the cards or the
           // Welcome message
-          return this.cookieExists('userToken') ? <Cards/> : <Welcome/>
+          return this.state.nickName ?
+            <Cards
+              nickName={this.state.nickName}
+            /> :
+            <Welcome
+              nickName={this.state.nickName}
+            />
         }}/>
 
         <Route exact path="/registration" render={() => {
