@@ -1,5 +1,14 @@
 # Flash cards
 
+## Run the App
+- Clone the app in you local machine
+- Install the project dependencies:
+```$ npm install```
+- Start the project
+    - For development
+    ```$npm start```
+    - For production
+    ```$ npm run-script build```
 =====
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
