@@ -3,9 +3,10 @@ import React, {Component} from 'react';
 import './App.css';
 import {Route} from 'react-router-dom';
 import Welcome from "./components/Welcome";
-import Cards from "./components/Cards";
+import Dashboard from "./components/Dashboard";
 import Registration from "./components/Registration";
 import Settings from "./components/Settings";
+import Cards from "./components/Cards";
 
 class App extends Component {
   //TODO add a logout system if the same browser is shared between users
@@ -55,7 +56,7 @@ class App extends Component {
           //Check if the userToken is set and displays the cards or the
           // Welcome message
           return this.state.nickName ?
-            <Cards
+            <Dashboard
               nickName={this.state.nickName}
             /> :
             <Welcome
@@ -76,6 +77,12 @@ class App extends Component {
             <Settings
               nickName={this.state.nickName}
             />
+          )
+        }}/>
+
+        <Route exact path="/cards" render={() => {
+          return (
+            <Cards/>
           )
         }}/>
       </div>
