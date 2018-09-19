@@ -16,7 +16,6 @@ class App extends Component {
 
   componentDidMount() {
     this.cookieExists('userToken');
-    console.log('foo');
   }
 
   //Check if a specific cookie exists already
@@ -73,7 +72,11 @@ class App extends Component {
         }}/>
 
         <Route exact path="/settings" render={() => {
-          return <Settings/>
+          return (
+            <Settings
+              nickName={this.state.nickName}
+            />
+          )
         }}/>
       </div>
     );
